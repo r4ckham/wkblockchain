@@ -38,7 +38,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="18" />
-          <entry key="gitignore" value="24" />
+          <entry key="gitignore" value="44" />
           <entry key="htaccess" value="1" />
           <entry key="js" value="24" />
           <entry key="php" value="2738" />
@@ -49,7 +49,7 @@
         <counts>
           <entry key="JavaScript" value="24" />
           <entry key="PHP" value="2738" />
-          <entry key="PLAIN_TEXT" value="64" />
+          <entry key="PLAIN_TEXT" value="84" />
           <entry key="htaccess" value="1" />
         </counts>
       </usages-collector>
@@ -147,8 +147,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+            <state relative-caret-position="30">
+              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -335,12 +335,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1541698966408</updated>
-      <workItem from="1541698968005" duration="9460000" />
+      <workItem from="1541698968005" duration="9739000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9460000" />
+    <option name="totallyTimeSpent" value="9739000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
@@ -527,8 +527,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        <state relative-caret-position="30">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
         </state>
       </provider>
     </entry>
