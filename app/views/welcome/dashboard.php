@@ -9,8 +9,8 @@ extract($data);
 
 <div class="row">
     <div class="jumbotron text-center container" style="background: #373a3d;color: aliceblue;margin-left: 12px">
-        <h1>Block</h1>
-        <p>Contrat n° <?= $numContrat ?></p>
+        <h1>BlockChain</h1>
+        <p>Contrat n° <u><?= $numContrat ?></u></p>
     </div>
 </div>
 
