@@ -27,9 +27,7 @@ var consultation = {
                 that.addRow(this , index);
             });
 
-            that.table.DataTable( {
-                responsive: true
-            });
+            that.table.DataTable();
 
             that.div.find("#data-consultation_length").hide();
             that.div.find("#data-consultation_info").css("color" , "white");
@@ -43,8 +41,8 @@ var consultation = {
 
         let html="";
 
-        html += '<div> \
-                    <table id="data-consultation" class="table table-bordered table-dark table-hover" style="width:100%">\
+        html += '<div class="table-responsive" style="width: auto"> \
+                    <table id="data-consultation" class="table table-bordered dt-responsive table-dark table-hover nowrap" style="width:auto">\
                         <thead>\
                             <tr>\
                                 <th>Id</th>\

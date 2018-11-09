@@ -3,6 +3,20 @@
     animation: blinker 3s linear infinite;
 }
 
+.blink_me:hover {
+    animation: paused;
+}
+
+.blockchain {
+    cursor : zoom-in;
+}
+
+.blockchain:hover {
+    transform: scale(2);
+    z-index: 999;
+    background: black;
+}
+
 @keyframes blinker {
     50% {
         opacity: 0;

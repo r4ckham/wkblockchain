@@ -25,7 +25,7 @@ var control = {
             </div>'+
             '<!-- The Modal -->\n' +
             '<div class="modal fade" id="myModal">\n' +
-            '  <div class="modal-dialog modal-lg" style="max-width: 1350px!important;" >\n' +
+            '  <div class="modal-dialog modal-lg" style="max-width: 70%!important;" >\n' +
             '    <div class="modal-content" style="background:#212528">\n' +
             '\n' +
             '      <!-- Modal Header -->\n' +
@@ -36,7 +36,7 @@ var control = {
             '\n' +
             '      <!-- Modal body -->\n' +
             '      <div class="modal-body">\n' +
-            '        <div id="liste-sinistre" class="col-sm-12" style="margin-top: 30px;color:white">\n            </div>' +
+            '        <div id="liste-sinistre" class="" style="margin-top: 30px;color:white">\n            </div>' +
             '      </div>\n' +
             '\n' +
             '      <!-- Modal footer -->\n' +

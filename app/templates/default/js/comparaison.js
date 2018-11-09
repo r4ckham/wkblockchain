@@ -38,8 +38,8 @@ var comparaison = {
     drawBlock : function(hash , previousHash , index)
     {
         let html = "";
-        html += '<div id="block-'+index+'" class="col-sm-3" style="border: aliceblue 1px dotted;text-align: justify;">' +
-            '<p> <span style="color:magenta;font-size: 0.6em">block n° : '+index+'</span> <br> ' +
+        html += '<div id="block-'+index+'" class="col-xl-3 col-lg-2 blockchain" style="border: aliceblue 1px dotted;text-align: justify;">' +
+            '<p> <span style="color:magenta;font-size: 0.6em">block n° : '+index+'  <i class="fas fa-link float-right zoom-block" style="margin-top: 10px;font-size: 1.2em;color: aliceblue"></i></span> <br> ' +
             ' <span style="color:chartreuse;font-size: 0.5em">'+hash+'</span> <br> ' +
             '<span style="color:cyan;font-size: 0.5em">'+previousHash+'</span></p>'
             '</div>';
@@ -69,6 +69,7 @@ var comparaison = {
             if (sinistre.Hash != data.hash)
             {
                 that.div.find("#block-"+index).css("background-color" , "#540000").addClass("blink_me");
+                that.div.find("#block-"+index).find("i").removeClass("fa-link").addClass("fa-unlink");
                 console.log("erreur" , "#block"+index);
             }
 
