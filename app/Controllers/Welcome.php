@@ -14,6 +14,7 @@ use Core\Controller;
 use Core\View;
 use Helpers\Session;
 use Helpers\Tools;
+use Helpers\Url;
 use Models\BlockchainModel;
 
 /**
@@ -91,9 +92,11 @@ class Welcome extends Controller
         Session::set(BlockchainModel::F_NUM_CONTRAT , $id);
         $data["numContrat"] = $id;
 
-        View::renderTemplate('header' , $data);
-        View::render('welcome/dashboard' , $data);
-        View::renderTemplate('footer' , $data);
+        Url::redirect("");
+
+        //View::renderTemplate('header' , $data);
+        //View::render('welcome/dashboard' , $data);
+        //View::renderTemplate('footer' , $data);
 
     }
 
@@ -150,7 +153,7 @@ class Welcome extends Controller
     private function letsEncrypt()
     {
         $previous = Tools::getPost('previous');
-        $date = Tools::getPost('date')." 00:00:01";
+        $date = Tools::getPost('date');
         $lieu = Tools::getPost('lieu');
         $desc = Tools::getPost('desc');
 
@@ -170,6 +173,7 @@ class Welcome extends Controller
         $array = [
             "status" => "OK",
             "hash" => $hash,
+            "previous" => $previous,
         ];
         echo json_encode($array);
         exit;

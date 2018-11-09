@@ -8,7 +8,8 @@ extract($data);
 ?>
 
 <div class="row">
-    <div class="jumbotron text-center" style="width:100%">
+    <div class="jumbotron text-center container" style="background: #373a3d;color: aliceblue;margin-left: 12px">
+        <h1>Block</h1>
         <p>Contrat n° <?= $numContrat ?></p>
     </div>
 </div>

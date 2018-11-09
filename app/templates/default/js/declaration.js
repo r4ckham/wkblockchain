@@ -15,7 +15,7 @@ var declarationSinistre = {
 		console.log(this.numContrat);
 
 		let html = '\
-					<div class="card" style="width:100%">\
+					<div class="card" style="width:100%;background: #212528;color:white;border-color: white">\
 						<!-- <img class="card-img-top" src="https://1800leefree-gbycpnmffy9.netdna-ssl.com/wp-content/uploads/2018/04/Steinberg-broadside-crash.jpg" alt="Card image" style="width:100%">\ -->\
 						<div class="card-body">\
 						\
@@ -24,14 +24,14 @@ var declarationSinistre = {
 						\
 							<div class="input-group" style="margin-bottom:10px">\
 								<div class="input-group-prepend">\
-									<span class="input-group-text">Date</span>\
+									<span class="input-group-text">Date &nbsp</span>\
 								</div>\
 								<input id="sinistre-input-date" class="form-control">\
 							</div>\
 						\
 							<div class="input-group" style="margin-bottom:10px">\
 								<div class="input-group-prepend">\
-									<span class="input-group-text" >Lieu</span>\
+									<span class="input-group-text" >Lieu &nbsp </span>\
 								</div>\
 								<input id="sinistre-input-lieu" class="form-control">\
 							</div>\
@@ -44,9 +44,17 @@ var declarationSinistre = {
 							</div>\
 						\
 						<div>\
-							<button id="btn-sinistre" class="btn btn-success btn-block">Validez Formulaire</button>\
+							<button id="btn-sinistre" class="btn btn-outline-success btn-block">Validez Formulaire</button>\
 						</div>\
 						</div>\
+					</div>\
+					<div class="col-sm-12" style="margin-top: 30px;border: aliceblue 1px solid;border-radius: 5px">\
+            			<button type="button" class="btn btn-outline-primary btn-block" style="margin-bottom:5px;margin-top: 15px" data-toggle="modal" data-target="#myModal">\
+             				Consulter les entrées \
+            			</button>\
+            			<a href="http://localhost/wkblockchain/logout" class="btn btn-outline-danger btn-block" style="margin-top: 10px;margin-bottom:15px;">\
+            				Se déconnecter \
+            			</a>\
 					</div>';
 
 		this.div.html(html);

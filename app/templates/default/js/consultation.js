@@ -90,7 +90,8 @@ var consultation = {
 
     },
 
-    letsEncrypt : function(sinistre){
+    letsEncrypt : function(sinistre)
+    {
         let that = this;
         let form = {
             action : "lets-encrypt",
@@ -107,7 +108,25 @@ var consultation = {
                 alert("Oooops une erreure c'est produite !");
             }
 
-            that.divDisplayResult.html(data.hash);
+            let html = "";
+
+            console.log(sinistre.Hash , data.hash , data.previous);
+            
+            if (sinistre.Hash != data.hash)
+            {
+                html += '<div class="col-xs-12 text-center" style="color:red">' +
+                    '<b>Hash : '+ data.hash  +'</b>' +
+                    '<h2><i class="fas fa-skull-crossbones"></i><small style="font-size: 0.4em"> - Les données semblent corompues ! -</small><i class="fas fa-skull-crossbones"></i></h2>' +
+                    ''+
+                    '</div>';
+            } else {
+                html += '<div class="col-xs-12 text-center" style="color:lawngreen">' +
+                    '<b>Hash : '+ data.hash  +'</b>' +
+                    '<h2><i class="far fa-thumbs-up"></i></h2>'+
+                    '</div>';
+            }
+
+            that.divDisplayResult.html(html);
 
         } , "json");
     },

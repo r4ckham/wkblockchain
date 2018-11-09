@@ -78,7 +78,7 @@ class BlockchainModel extends Model
         $rows = $this->db->select($sql, $ps);
 
         if(empty($rows)){
-            return 0;
+            return "0";
         }
 
         return $rows[0]->{"$f_precedent_hash"};
@@ -97,6 +97,7 @@ class BlockchainModel extends Model
         ];
 
         $hash = md5(json_encode($temp));
+        //var_dump($hash , json_encode($temp)).die();
 
         $data = [
             self::F_INDEX => $this->getCurrentIncrementValue(),
