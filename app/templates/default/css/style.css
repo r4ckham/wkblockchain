@@ -1,6 +1,6 @@
 /* Your styles here */
 .blink_me {
-    animation: blinker 3s linear infinite;
+    animation: blinker 2s linear infinite;
 }
 
 .blink_me:hover {
