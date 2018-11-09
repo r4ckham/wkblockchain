@@ -1,9 +1,10 @@
 var declarationSinistre = {
 
-	init : function(numContrat){
+	init : function(numContrat , ajaxUrl){
 
 		this.div = $("#div-declaration");
 		this.numContrat = numContrat;
+		this.ajaxUrl = ajaxUrl;
 		this.template();
 		this.url = "http://localhost/Blockchain/";
 
@@ -15,10 +16,10 @@ var declarationSinistre = {
 
 		let html = '\
 					<div class="card" style="width:100%">\
-						<img class="card-img-top" src="https://1800leefree-gbycpnmffy9.netdna-ssl.com/wp-content/uploads/2018/04/Steinberg-broadside-crash.jpg" alt="Card image" style="width:100%">\
+						<!-- <img class="card-img-top" src="https://1800leefree-gbycpnmffy9.netdna-ssl.com/wp-content/uploads/2018/04/Steinberg-broadside-crash.jpg" alt="Card image" style="width:100%">\ -->\
 						<div class="card-body">\
 						\
-							<h4 class="card-title text-center">DECLARATION</h4>\
+							<h6 class="card-title text-center">Déclaration d\'incident</h6>\
 							<div class="card-text text-center"> N°'+ this.numContrat +'</div>\
 						\
 							<div class="input-group" style="margin-bottom:10px">\
@@ -60,25 +61,39 @@ var declarationSinistre = {
 		});
 
 		this.sinistreDate.datepicker({dateFormat: "yy-mm-dd"});
-		this.
 
 	},
 
 	insertSinistre : function(){
+		let that = this;
 
-		let AjaxURL = "http://localhost:4444/Blockchain/insert";
-		let json = {
-			numContrat : this.numContrat,
+		let form = {
+			action : "insert-block",
+			date : this.sinistreDate.val(),
+			lieu : this.sinistreLieu.val(),
+			desc : this.sinistreDesc.val(),
 		};
-		
-	    $.ajax({
-	        type: "POST",
-	        url: AjaxURL,
-	        data: {form: json},
-	        success: function(result) {
-	            window.console.log(result);
-	        }
-	    });
+
+		console.log(form , this.ajaxUrl);
+
+		$.post(this.ajaxUrl , form , function(data){
+			if(data.status == "KO"){
+				alert(data.Error);
+			}
+			console.log(data);
+			that.resetInput();
+			that.notify();
+		} , "json");
+	},
+
+	resetInput : function () {
+		this.sinistreDesc.val(null);
+		this.sinistreLieu.val(null);
+		this.sinistreDate.val(null);
+    },
+
+	notify:function(){
+		$(this).trigger("element-write");
 	},
 
 

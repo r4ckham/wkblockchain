@@ -18,6 +18,8 @@ class Url
     const URL_SEARCH = "search";
     const URL_WRITE = "write";
     const URL_VERIFY = "verify";
+    const URL_DASH_AJAX = "dash/ajax";
+    const URL_LOGOUT = "logout";
     /**
      * Redirect to chosen url.
      *

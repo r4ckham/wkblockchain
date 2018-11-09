@@ -19,10 +19,9 @@ class BlockchainModel extends Model
     const F_INDEX = "id";
     const F_HASH = "Hash";
     const F_PRECEDENTHASH   = "PrecedentHash";
-    const F_NUM_SINISTRE    = "NumSinistre";
     const F_DATE_SINISTRE   = "DateSinistre";
     const F_LIEU_SINISTRE   = "LieuSinistre";
-    const F_DESCRIPTION     = "Desription";
+    const F_DESCRIPTION     = "Description";
     const F_NUM_CONTRAT     = "NumCont";
 
     private $table = Database::TABLE_BLOCK;
@@ -46,13 +45,15 @@ class BlockchainModel extends Model
         $sql = "SELECT * FROM $this->table ";
         $sql.= "WHERE $f_num_cont = :id";
 
-        return $this->db->select($sql, $ps, \PDO::FETCH_CLASS, BlockEntite::class);
+        return $this->db->select($sql, $ps);
     }
 
     public function getCurrentIncrementValue()
     {
-        $sql = "SELECT `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'axa_blockchain' AND   TABLE_NAME   = '$this->table'";
-        return $this->db->select($sql);
+        $sql = "SELECT AUTO_INCREMENT FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'axa_blockchain' AND   TABLE_NAME = '$this->table'";
+        $row = $this->db->select($sql);
+        //var_dump($row[0]->{"AUTO_INCREMENT"}).die();
+        return $row[0]->{"AUTO_INCREMENT"};
     }
 
     public function getLastHashBlockForContrat()
@@ -64,43 +65,51 @@ class BlockchainModel extends Model
         }
 
         $f_num_cont = self::F_NUM_CONTRAT;
-        $f_precedent_hash = self::F_PRECEDENTHASH;
+        // RECUPERER LE HASH DU PRECEDENT MAIS PAS SON PRECEDENT HASH /!\
+        $f_precedent_hash = self::F_HASH;
         $f_index = self::F_INDEX;
         $ps = [":id" => $id];
 
         $sql = "SELECT $f_precedent_hash FROM $this->table ";
         $sql.= "WHERE $f_num_cont = :id ORDER BY $f_index DESC LIMIT 1";
 
-        return $this->db->select($sql, $ps, \PDO::FETCH_CLASS, BlockEntite::class);
+        //var_dump($sql).die();
+
+        $rows = $this->db->select($sql, $ps);
+
+        if(empty($rows)){
+            return 0;
+        }
+
+        return $rows[0]->{"$f_precedent_hash"};
     }
 
-    public function insertBlock( $numSinistre , $dateSinistre , $lieuSinistre , $description)
+    public function insertBlock( $dateSinistre , $lieuSinistre , $description)
     {
+        $numContrat = Session::get(self::F_NUM_CONTRAT);
+
         $temp = [
-            self::F_INDEX => $this->getCurrentIncrementValue(),
             self::F_PRECEDENTHASH => $this->getLastHashBlockForContrat(),
-            self::F_NUM_SINISTRE => $numSinistre,
             self::F_DATE_SINISTRE => $dateSinistre,
             self::F_LIEU_SINISTRE => $lieuSinistre,
             self::F_DESCRIPTION => $description,
+            self::F_NUM_CONTRAT => $numContrat,
         ];
 
-        $hash = hash('sha256' , serialize($temp));
+        $hash = md5(json_encode($temp));
 
         $data = [
             self::F_INDEX => $this->getCurrentIncrementValue(),
-            self::F_NUM_SINISTRE => $numSinistre,
+            self::F_INDEX => $this->getCurrentIncrementValue(),
             self::F_DATE_SINISTRE => $dateSinistre,
             self::F_LIEU_SINISTRE => $lieuSinistre,
             self::F_DESCRIPTION => $description,
             self::F_PRECEDENTHASH => $this->getLastHashBlockForContrat(),
             self::F_HASH => $hash,
+            self::F_NUM_CONTRAT => $numContrat,
         ];
 
         $this->db->insert($this->table , $data);
-
-
-
 
     }
 

@@ -20,6 +20,9 @@ Router::any('subpage', 'Controllers\Welcome@subPage');
 Router::any(Url::URL_SEARCH, 'Controllers\Welcome@search');
 Router::any(Url::URL_WRITE, 'Controllers\Welcome@insertBlock');
 Router::any(Url::URL_VERIFY, 'controllers\Welcome@verifContrat');
+Router::any(Url::URL_DASH_AJAX, 'controllers\Welcome@ajax');
+Router::any(Url::URL_LOGOUT, 'controllers\Welcome@logOut');
+
 
 
 /* Module routes. */

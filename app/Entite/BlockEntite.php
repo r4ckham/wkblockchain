@@ -22,11 +22,6 @@ class BlockEntite
         return $this->{BlockchainModel::F_PRECEDENTHASH};
     }
 
-    public function getNumSinistre()
-    {
-        return $this->{BlockchainModel::F_NUM_SINISTRE};
-    }
-
     public function getDateSinistre()
     {
         return $this->{BlockchainModel::F_DATE_SINISTRE};

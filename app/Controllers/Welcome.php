@@ -29,6 +29,27 @@ class Welcome extends Controller
         parent::__construct();
     }
 
+    public function ajax()
+    {
+        $action = Tools::getPost("action");
+
+        if ($action == "insert-block"){
+            $this->insertBlock();
+        }
+
+        if ($action == "get-sinistres"){
+            $this->getLastSinistre();
+        }
+
+        if ($action == "lets-encrypt"){
+            $this->letsEncrypt();
+        }
+
+        $array = ["Status" => "KO"];
+        echo json_encode($array);
+        exit;
+    }
+
     /**
      * Define Index page title and load template files.
      */
@@ -42,6 +63,7 @@ class Welcome extends Controller
             View::renderTemplate('header', $data);
             View::render('welcome/welcome', $data);
             View::renderTemplate('footer', $data);
+            exit;
         }else{
             $data["numContrat"] = $id;
 
@@ -59,10 +81,11 @@ class Welcome extends Controller
         $model = new BlockchainModel();
         $ret = $model->getChaineByIdContrat($id);
 
-        if(empty($ret)){
+        if(empty($id)){
             View::renderTemplate('header');
             View::render('welcome/welcome');
             View::renderTemplate('footer');
+            exit;
         }
 
         Session::set(BlockchainModel::F_NUM_CONTRAT , $id);
@@ -74,14 +97,96 @@ class Welcome extends Controller
 
     }
 
-    public function insertBlock()
+    private function getLastSinistre()
     {
-        $numSinistre = Tools::getPost('numSinistre');
-        $dateSinistre = Tools::getPost('dateSinistre');
-        $lieuSinistre = Tools::getPost('lieuSinistre');
-        $description = Tools::getPost('description');
+        $model = new BlockchainModel();
+        $ret = $model->getChaineByIdContrat();
+
+        $array = [
+            "status" => "OK",
+            "ret" => $ret,
+            "index" => $model->getCurrentIncrementValue(),
+            "lastHash" => $model->getLastHashBlockForContrat(),
+        ];
+        echo json_encode($array);
+        exit;
+    }
+
+    private function insertBlock()
+    {
+        $dateSinistre = Tools::getPost('date')." 00:00:01";
+        $lieuSinistre = Tools::getPost('lieu');
+        $description = Tools::getPost('desc');
+
+        $dbg = [
+            "date" =>$dateSinistre,
+            "lieu" =>$lieuSinistre,
+            "desc" =>$description,
+        ];
+
+        if(empty($dateSinistre) || empty($lieuSinistre) || empty($description)){
+            $array = [
+                "status" => "KO",
+                "Error" => "Vous n'avez pas remplis tout les champs ...",
+                "dbg" => $dbg,
+            ];
+            echo json_encode($array);
+            exit;
+        }
 
         $model = new BlockchainModel();
-        $model->insertBlock($numSinistre, $dateSinistre , $lieuSinistre , $description);
+        $model->insertBlock($dateSinistre , $lieuSinistre , $description);
+
+        $array = [
+            "status" => "OK",
+            "dbg" => $dbg,
+            "index" => $model->getCurrentIncrementValue(),
+            "lastHash" => $model->getLastHashBlockForContrat(),
+        ];
+        echo json_encode($array);
+        exit;
+    }
+
+    private function letsEncrypt()
+    {
+        $previous = Tools::getPost('previous');
+        $date = Tools::getPost('date')." 00:00:01";
+        $lieu = Tools::getPost('lieu');
+        $desc = Tools::getPost('desc');
+
+        $temp = [
+            BlockchainModel::F_PRECEDENTHASH => $previous,
+            BlockchainModel::F_DATE_SINISTRE => $date,
+            BlockchainModel::F_LIEU_SINISTRE => $lieu,
+            BlockchainModel::F_DESCRIPTION => $desc,
+            BlockchainModel::F_NUM_CONTRAT => Session::get(BlockchainModel::F_NUM_CONTRAT),
+        ];
+
+        //var_dump($temp).die();
+
+        //$hash = hash('sha256' , serialize($temp));
+        $hash = md5(json_encode($temp));
+
+        $array = [
+            "status" => "OK",
+            "hash" => $hash,
+        ];
+        echo json_encode($array);
+        exit;
+    }
+
+    /**
+     * @return string
+     */
+    public function logOut()
+    {
+        Session::destroy(BlockchainModel::F_NUM_CONTRAT);
+
+        $data = [];
+
+        View::renderTemplate('header', $data);
+        View::render('welcome/welcome', $data);
+        View::renderTemplate('footer', $data);
+
     }
 }

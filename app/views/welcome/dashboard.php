@@ -3,12 +3,12 @@
  * Sample layout.
  */
 use Core\Language;
+use Helpers\Url;
 extract($data);
 ?>
 
 <div class="row">
     <div class="jumbotron text-center" style="width:100%">
-        <h1>Déclaration de sinistre</h1>
         <p>Contrat n° <?= $numContrat ?></p>
     </div>
 </div>
@@ -18,7 +18,9 @@ extract($data);
 </div>
 
 <script type="text/javascript">
+    var ajaxUrl = "<?=DIR . Url::URL_DASH_AJAX?>";
+
     $(document).ready(function(){
-        control.init("<?= $numContrat ?>");
+        control.init("<?= $numContrat ?>" , ajaxUrl);
     });
 </script>
