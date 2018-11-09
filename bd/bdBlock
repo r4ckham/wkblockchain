@@ -1,0 +1,127 @@
+-- phpMyAdmin SQL Dump
+-- version 4.4.10
+-- http://www.phpmyadmin.net
+--
+-- Client :  localhost:3306
+-- Généré le :  Ven 09 Novembre 2018 à 21:38
+-- Version du serveur :  5.5.42
+-- Version de PHP :  7.0.8
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Base de données :  `axa_blockchain`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `BlockChain`
+--
+
+CREATE TABLE `BlockChain` (
+  `Id` int(11) NOT NULL,
+  `Hash` text NOT NULL,
+  `PrecedentHash` text NOT NULL,
+  `DateSinistre` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `LieuSinistre` varchar(255) NOT NULL,
+  `Description` text NOT NULL,
+  `NumCont` varchar(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `BlockChain`
+--
+
+INSERT INTO `BlockChain` (`Id`, `Hash`, `PrecedentHash`, `DateSinistre`, `LieuSinistre`, `Description`, `NumCont`) VALUES
+(21, '1d8fa6491020723df04b217855964615', '0', '2018-10-31 23:00:00', 'Montpellier', 'Voiture accidentée', 'azer'),
+(22, '1bf1bbf4900890d8c38d966d381c30f9', '1d8fa6491020723df04b217855964615', '2018-11-01 23:00:00', 'Bordeaux', 'Accident de partis', 'azer'),
+(23, '8a53c544e2f2f89348bbf9d4abf117ca', '1bf1bbf4900890d8c38d966d381c30f9', '2018-11-10 23:00:00', 'test', 'test', 'azer'),
+(24, '8b77755495ed18452fed3932871b55e4', '8a53c544e2f2f89348bbf9d4abf117ca', '2018-11-19 23:00:00', 'test', 'test', 'azer'),
+(25, '4748f2405c4e1744f5045f34e03316c3', '8b77755495ed18452fed3932871b55e4', '0000-00-00 00:00:00', 'test', 'test', 'azer'),
+(26, 'c826e9a2c1fd08040170a175d5512c52', '4748f2405c4e1744f5045f34e03316c3', '2018-10-31 23:00:01', 'test', 'test', 'azer'),
+(27, '83431659aaf958e0afe795ffdf95fcc9', 'c826e9a2c1fd08040170a175d5512c52', '2018-11-19 23:00:01', 'test', 'test', 'azer'),
+(28, 'f00c663e432af3508f58465d3423710a', '83431659aaf958e0afe795ffdf95fcc9', '2018-11-12 23:00:01', 'test', 'test', 'azer'),
+(29, '929e3e18ca30847c7e5d7ffc85ef56f1', '"0"', '2018-11-09 09:53:19', 'Montpellier', 'Refus de priorité', 'test'),
+(30, 'e486ff394393caa425967f00b5d399dd', '929e3e18ca30847c7e5d7ffc85ef56f1', '2018-11-01 23:00:01', 'Bordeaux', 'Dommage corporel', 'test'),
+(31, '56a2ec29174a16e0cb676af2a7324f36', 'e486ff394393caa425967f00b5d399dd', '2018-11-12 23:00:01', 'Paris', 'Metro pris en pleine tronche', 'test'),
+(32, '632d3480cdd8342d7d1424db37dcea35', '56a2ec29174a16e0cb676af2a7324f36', '2018-11-05 23:00:01', 'Marseille', 'Ballon en pleine tête du à un tir fameux de mitroglou', 'test'),
+(33, 'f926a776e25fd59ef355ba57d8020567', '632d3480cdd8342d7d1424db37dcea35', '2018-11-05 23:00:01', 'Chambery', 'Clinique hospitaliere pour passer son accent récupérer chez nos amis les savoyards !', 'test'),
+(35, '127c8a15c5b4858dc5c4b56d9d22ad60', 'f926a776e25fd59ef355ba57d8020567', '2018-11-13 23:00:01', 'Berlin', 'A tenu à écouter Ribery pendant plus d''une heure !', 'test'),
+(36, '5b3e32d607ed6f8d02df568bca03189b', '127c8a15c5b4858dc5c4b56d9d22ad60', '2018-11-12 23:00:01', 'Montpellier', 'Au domicile opération du cerveau pour avoir tenue 1h devant TPMP', 'test'),
+(37, '787beeb3a3deb928f3969b907025d6ce', '5b3e32d607ed6f8d02df568bca03189b', '2018-11-18 23:00:01', 'EPSI', 'Oreille cassée pour avoir entendu une vanne de berthe', 'test'),
+(38, '0263bf895e8e84cbced218d38c346f79', '787beeb3a3deb928f3969b907025d6ce', '2018-11-22 23:00:01', 'Epsi', 'Passe en présentation de workshop et il est pas pret', 'test'),
+(39, '502caebe9b0729c49be6c92b273c0e7b', '0263bf895e8e84cbced218d38c346f79', '2018-11-15 23:00:01', 'Toujours à l''epsi', 'Se remet d''une opération anale post-workshop', 'test'),
+(40, '981716d9aa1b5e0645eda55f107c1528', '502caebe9b0729c49be6c92b273c0e7b', '2018-11-16 23:00:01', 'Epsi', 'Apres être tombé dans les pommes il aurait hurlé projet innovation !', 'test'),
+(41, '146e8c906bcfcbe186a80b6a28c69afa', '981716d9aa1b5e0645eda55f107c1528', '2018-11-20 23:00:01', 'Toulouse', 'A tenu 2h en bus avec vincent et sa grande bouche', 'test'),
+(42, '5d1b6dfe8beade09bd8fba034f027b80', '146e8c906bcfcbe186a80b6a28c69afa', '2018-11-11 23:00:01', 'Dunkerque', 'C''est retrouvé en prison dû', 'test'),
+(43, '998ec7a591350dc75391f2b8958b3869', '5d1b6dfe8beade09bd8fba034f027b80', '2018-11-13 23:00:01', 'mulhouse', 'Surplus de choucoutre', 'test'),
+(44, 'fcbd71b9457f40716dcd40bba9ab2a0a', '998ec7a591350dc75391f2b8958b3869', '2018-11-27 23:00:01', 'Nice', 'Vague beaucoup trop puissante pour notre petit brice', 'test'),
+(45, 'f8ecb3aa50b38a7cda35fe4678fe583e', 'fcbd71b9457f40716dcd40bba9ab2a0a', '2018-11-25 23:00:01', 'Monaco', 'Pris un porte monnaie en pleine tête', 'test'),
+(46, '4db61815bcd6c4ece7068a2716fe6d50', 'f8ecb3aa50b38a7cda35fe4678fe583e', '2018-11-08 23:00:01', 'Montpellier', 'N''a pas dormis pendant 3 millions d''année', 'test'),
+(47, '330b084e895d3f10ccb91d0ab719e27c', '4db61815bcd6c4ece7068a2716fe6d50', '2018-11-18 23:00:01', 'Lyon', 'DANS LA JUNGLE TERRIBLE JUNGLE LE LYON EST MORT CE SOIR !!!!', 'test'),
+(48, '4b72c5f214e87fd6cd17b5281e0bfb4b', '330b084e895d3f10ccb91d0ab719e27c', '2018-11-14 23:00:01', 'Montparnasse', 'A tenter de se suicider aprés avoir écoutez les albums trop DARK d''evanessence !', 'test'),
+(49, 'c06862496f6665177b99d4b6fa6c47e0', '4b72c5f214e87fd6cd17b5281e0bfb4b', '2018-11-18 23:00:01', 'Dijon', 'Indejestion de 3kg de moutarde , il a flinguer 1 usine', 'test'),
+(50, '39584050d568a5d1bed74ff816ab167f', 'c06862496f6665177b99d4b6fa6c47e0', '2018-11-23 23:00:01', 'Toulon', 'Visite au mileu du stade en plein match de top XIV pas la meilleure idée...', 'test'),
+(51, '57783891b55dae0ca5d5d60dda5fafc8', '39584050d568a5d1bed74ff816ab167f', '2018-11-12 23:00:01', 'Quimper', 'Les morrues ça se mange ça se marie pas ..', 'test'),
+(52, '47ba6784c19c9b59da1ad6d1ea6e9326', '57783891b55dae0ca5d5d60dda5fafc8', '2018-11-27 23:00:01', 'Chez le rouge', 'développe pendant 3 h pour faire un jeu de données , il a tue femme est enfant avant même qu''il naissent !', 'test'),
+(53, '90c911355aa8c59c35122de0f50c5206', '47ba6784c19c9b59da1ad6d1ea6e9326', '2018-11-23 23:00:01', 'Calais', 'N''a pas vu de tigre et d''éléphant dans cette jungle la ... Et mogly il a bien changé', 'test'),
+(54, '44defc975ac0e36b157d4b58e8e8fea4', '90c911355aa8c59c35122de0f50c5206', '2018-11-20 23:00:01', 'Lattes', 'C''est fait latter la tronche', 'test'),
+(55, '8fa586ebb1d91c2ba6e6548a1cf8540e', '44defc975ac0e36b157d4b58e8e8fea4', '2018-11-16 23:00:01', 'Noyon', 'Noyons Joël !', 'test'),
+(56, 'c47f1f937f2dd44a514dd917aa470796', '8fa586ebb1d91c2ba6e6548a1cf8540e', '2018-11-28 23:00:01', 'Creteil', 'Bien joué le coup du hashih ...', 'test'),
+(57, '3960562ff15022ed26fd88445e8edf86', 'c47f1f937f2dd44a514dd917aa470796', '2018-11-22 23:00:01', 'Fin de la chaine', 'Fin de la chaine !', 'test'),
+(58, '55b734784fa90325f04a5f129bc3ac67', 'f00c663e432af3508f58465d3423710a', '2018-11-08 23:00:01', 'Epsi', 'Dommage coporel', 'azer'),
+(59, 'fa674998d12a136072dd174fd1609e91', '3960562ff15022ed26fd88445e8edf86', '2018-11-19 23:00:01', 'Mtp', 'test', 'test'),
+(60, '124e2535fd0d8d437fa55369028de062', 'fa674998d12a136072dd174fd1609e91', '2018-11-29 23:00:01', 'Montpellier', 'Vérification de comparaison des hashs', 'test'),
+(61, 'c3b641b0632e1c7461e2d39c00da3332', '0', '2018-11-09 09:44:29', 'test', 'test', 'AZE'),
+(62, '06a992493a24f45414ff3961b8fb3b93', 'd66000cce119de4a9c738e8f2d8c3acd', '2018-11-13 23:00:01', 'test', 'test', 'AZE'),
+(63, 'b9bf82a4b17c9b27cd9b59e79c37a348', '0', '2018-10-31 23:00:01', 'test', 'test', 'hash'),
+(64, 'ded1d2a0f156acbc6bdec08fbc1e2727', 'b9bf82a4b17c9b27cd9b59e79c37a348', '2018-11-19 23:00:01', 'test', 'test', 'hash'),
+(65, '784acf18cefcd601008c7edb4a9fba29', 'ded1d2a0f156acbc6bdec08fbc1e2727', '2018-11-19 23:00:01', 'paris', 'test', 'hash'),
+(66, 'eb2bfc11dcc5080d34f9d0b2672e471d', '784acf18cefcd601008c7edb4a9fba29', '2018-11-18 23:00:01', 'Montpellier', 'test', 'hash'),
+(67, 'cba1e1b72d8c0a70d9a05e83fa9115b0', 'eb2bfc11dcc5080d34f9d0b2672e471d', '2018-11-12 23:00:01', 'Lyon', 'Description', 'hash'),
+(68, '2e5ffaefb8bf76720f5d767cf99862e1', 'cba1e1b72d8c0a70d9a05e83fa9115b0', '2018-11-20 23:00:01', 'Lyon', 'test', 'hash'),
+(69, '7feefe1ef808f733c75648d059845143', '2e5ffaefb8bf76720f5d767cf99862e1', '2018-11-09 12:42:00', 'Castres', 'Sinistre mais pas de la faute de l''assuré', 'hash'),
+(70, 'c49cee9711f45ce9486ecb7a0a1891e5', '7feefe1ef808f733c75648d059845143', '2018-11-23 23:00:01', 'Pau', 'Sinistre', 'hash'),
+(71, '86f05f78428ab8f0bab6d1b7a1c100b1', 'c49cee9711f45ce9486ecb7a0a1891e5', '2018-11-27 23:00:01', 'Noyon', 'Sinistre', 'hash'),
+(72, '5903f329ac8402996f1d9846ea250aa8', '86f05f78428ab8f0bab6d1b7a1c100b1', '2018-11-01 23:00:01', 'Amiens', 'Sinistre', 'hash'),
+(73, 'f827bb0726223046e31e8d22f46c7574', '5903f329ac8402996f1d9846ea250aa8', '2018-11-03 23:00:01', 'Paris', 'Sinistre', 'hash'),
+(74, '03654e4cd6c08cee6784990a82f0cf8d', 'f827bb0726223046e31e8d22f46c7574', '2018-11-12 23:00:01', 'Avignon', 'Sinistre', 'hash'),
+(75, '39da06305205a1cd731ccee8d9548284', '03654e4cd6c08cee6784990a82f0cf8d', '2018-11-04 23:00:01', 'Caromb', 'Sinistre', 'hash'),
+(76, '8a1b6fad51347fb032d175b96b600cdd', '39da06305205a1cd731ccee8d9548284', '2018-11-21 23:00:01', 'Marseille', 'Sinistre', 'hash'),
+(77, '565ffff0080091327d3a7383efed8e7d', '8a1b6fad51347fb032d175b96b600cdd', '2018-11-23 23:00:01', 'Nice', 'Sinistre', 'hash'),
+(78, '7f4bc008c797ebcc35c3d576465b9b70', '565ffff0080091327d3a7383efed8e7d', '2018-11-11 23:00:01', 'Paris', 'Sinistre', 'hash'),
+(79, 'd4ed79d4a6ea8891e9cc350b9fc5ed42', '7f4bc008c797ebcc35c3d576465b9b70', '2018-11-18 23:00:01', 'Montpellier', 'Sinistre', 'hash'),
+(80, '87c7f32a39c83aeb09c6118dec0fbc8d', 'd4ed79d4a6ea8891e9cc350b9fc5ed42', '2018-11-20 23:00:01', 'Bordeaux', 'Sinistre', 'hash'),
+(81, '96c6571514f20d590f96ced1ec5385b7', '87c7f32a39c83aeb09c6118dec0fbc8d', '2018-11-13 23:00:01', 'Monaco', 'Sinistre', 'hash'),
+(82, '7a55b322dbcec98725e8987c6dcdcae1', '96c6571514f20d590f96ced1ec5385b7', '2018-11-04 23:00:01', 'Viennes', 'Sinistre', 'hash'),
+(83, '4a10603bb3e45390d22e1a66eeceab9d', '7a55b322dbcec98725e8987c6dcdcae1', '2018-11-13 23:00:01', 'Berque', 'Sinistre', 'hash'),
+(84, 'e07299eb6e4897e5785d6d3020c28449', '4a10603bb3e45390d22e1a66eeceab9d', '2018-11-02 23:00:01', 'Quimper', 'Sinistre', 'hash'),
+(85, '467bbadb917fb52d67f8fd3f2f5516b7', 'e07299eb6e4897e5785d6d3020c28449', '2018-11-09 23:00:01', 'lilles', 'Sinistre', 'hash'),
+(86, '379c948645f9e3e9fb2b590ca3b1218a', '467bbadb917fb52d67f8fd3f2f5516b7', '2018-11-21 23:00:01', 'Nior', 'Sinistre', 'hash'),
+(87, '9ccbddad15e4cfeab7dc03f5b9bff5db', '379c948645f9e3e9fb2b590ca3b1218a', '2018-11-08 23:00:01', 'Epsi Montpellier', 'Responsabilité civile, (Ordinateur cassé)', 'hash'),
+(88, 'cc465c342a874a9ad9960ee24087b619', '0', '2018-10-31 23:00:01', 'Montpellier', 'Entrée', 'rack'),
+(89, '4cae21c7077ab15c3498c20453922b90', 'cc465c342a874a9ad9960ee24087b619', '2018-11-01 23:00:01', 'Epsi montpellier', 'azertyop', 'rack'),
+(90, 'af65958a7f0795d603c5e6bf100c1874', '9ccbddad15e4cfeab7dc03f5b9bff5db', '2018-11-12 23:00:01', 'Marseille', 'Stade vélodrome s''effondre', 'hash'),
+(91, 'a13deb7b671bc2ab9f8bff29a2e778d7', 'af65958a7f0795d603c5e6bf100c1874', '2018-11-09 19:56:51', 'montpellier', 'Bébou je t''aime', 'hash');
+
+--
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `BlockChain`
+--
+ALTER TABLE `BlockChain`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `BlockChain`
+--
+ALTER TABLE `BlockChain`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=92;
