@@ -68,7 +68,7 @@ var comparaison = {
 
             if (sinistre.Hash != data.hash)
             {
-                that.div.find("#block-"+index).css("background-color" , "darkred");
+                that.div.find("#block-"+index).css("background-color" , "#540000").addClass("blink_me");
                 console.log("erreur" , "#block"+index);
             }
 
