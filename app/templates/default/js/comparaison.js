@@ -68,7 +68,8 @@ var comparaison = {
 
             if (sinistre.Hash != data.hash)
             {
-                that.div.find("#block-"+index).css("background-color" , "#540000").addClass("blink_me");
+                that.div.find("#block-"+index).find("p").css("filter" , "invert(100%)");
+                that.div.find("#block-"+index).css("background-color" , "#330033").addClass("blink_me");
                 that.div.find("#block-"+index).find("i").removeClass("fa-link").addClass("fa-unlink");
                 console.log("erreur" , "#block"+index);
             }
