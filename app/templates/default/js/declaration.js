@@ -1,10 +1,11 @@
 var declarationSinistre = {
 
-	init : function(numContrat , ajaxUrl){
+	init : function(numContrat , ajaxUrl , logOutUrl){
 
 		this.div = $("#div-declaration");
 		this.numContrat = numContrat;
 		this.ajaxUrl = ajaxUrl;
+		this.logOutUrl = logOutUrl;
 		this.template();
 		this.url = "http://localhost/Blockchain/";
 
@@ -52,7 +53,7 @@ var declarationSinistre = {
             			<button type="button" class="btn btn-outline-primary btn-block" style="margin-bottom:5px;margin-top: 15px" data-toggle="modal" data-target="#myModal">\
              				Consulter les entrées \
             			</button>\
-            			<a href="http://localhost/wkblockchain/logout" class="btn btn-outline-danger btn-block" style="margin-top: 10px;margin-bottom:15px;">\
+            			<a href="'+ this.logOutUrl +'" class="btn btn-outline-danger btn-block" style="margin-top: 10px;margin-bottom:15px;">\
             				Se déconnecter \
             			</a>\
 					</div>';

@@ -38,7 +38,7 @@ var comparaison = {
     drawBlock : function(hash , previousHash , index)
     {
         let html = "";
-        html += '<div id="block-'+index+'" class="col-xl-3 col-lg-2 blockchain" style="border: aliceblue 1px dotted;text-align: justify;">' +
+        html += '<div id="block-'+index+'" class="col-xl-3 col-xs-6 blockchain" style="border: aliceblue 1px dotted;text-align: justify;">' +
             '<p> <span style="color:magenta;font-size: 0.6em">block n° : '+index+'  <i class="fas fa-link float-right zoom-block" style="margin-top: 10px;font-size: 1.2em;color: aliceblue"></i></span> <br> ' +
             ' <span style="color:chartreuse;font-size: 0.5em">'+hash+'</span> <br> ' +
             '<span style="color:cyan;font-size: 0.5em">'+previousHash+'</span></p>'

@@ -19,9 +19,10 @@ extract($data);
 </div>
 
 <script type="text/javascript">
-    var ajaxUrl = "<?=DIR . Url::URL_DASH_AJAX?>";
+    var ajaxUrl     = "<?=DIR . Url::URL_DASH_AJAX?>";
+    var logOutUrl   = "<?=DIR . Url::URL_LOGOUT ?>";
 
     $(document).ready(function(){
-        control.init("<?= $numContrat ?>" , ajaxUrl);
+        control.init("<?= $numContrat ?>" , ajaxUrl , logOutUrl);
     });
 </script>

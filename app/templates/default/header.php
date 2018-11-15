@@ -39,7 +39,7 @@ $hooks = Hooks::get();
     <script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
 
 </head>
-<body style="background:#212528">
+<body style="background:black">
 <?php
 //hook for running code after body tag
 $hooks->run('afterBody');
